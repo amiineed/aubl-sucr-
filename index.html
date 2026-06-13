@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Approche Mobile-First : on garantit un rendu correct sur mobile en premier -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Au Blé Sucré — Boulangerie-Pâtisserie Artisanale</title>
+  <meta
+    name="description"
+    content="Au Blé Sucré, votre boulangerie-pâtisserie artisanale. Pains, viennoiseries, pâtisseries, snacking et traiteur faits maison avec passion."
+  />
+
+  <!-- ===== Typographies (Google Fonts) =====
+       Serif élégante (Playfair Display) pour les titres -> tradition & artisanat
+       Sans-serif claire (Poppins) pour le corps -> lisibilité -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Feuille de style principale -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- ============================================================
+       EN-TÊTE : navigation collante (sticky)
+       ============================================================ -->
+  <header class="site-header" id="accueil">
+    <nav class="navbar" aria-label="Navigation principale">
+      <!-- Logo / Nom de la marque -->
+      <a href="#accueil" class="brand">
+        <span class="brand__icon" aria-hidden="true">🥖</span>
+        <span class="brand__name">Au Blé Sucré</span>
+      </a>
+
+      <!-- Bouton menu mobile (hamburger) -->
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <!-- Liens de navigation -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#accueil" class="nav-link">Accueil</a></li>
+        <li><a href="#specialites" class="nav-link">Nos Spécialités</a></li>
+        <li><a href="#savoir-faire" class="nav-link">Notre Savoir-Faire</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         SECTION HERO : accroche + image de fond + CTA
+         ============================================================ -->
+    <section class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Boulangerie • Pâtisserie • Artisanale</p>
+        <h1 class="hero__title">L'Artisanat et le Goût au Quotidien</h1>
+        <p class="hero__subtitle">
+          Chaque matin, nous pétrissons, façonnons et cuisons nos produits sur
+          place. Le bon pain, les viennoiseries dorées et les pâtisseries
+          gourmandes vous attendent.
+        </p>
+        <a href="#specialites" class="btn btn--primary">Découvrir nos produits</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION NOS SPÉCIALITÉS : grille de 4 cartes (CSS Grid)
+         ============================================================ -->
+    <section class="section specialites" id="specialites">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">Le meilleur du fait maison</p>
+          <h2 class="section__title">Nos Spécialités</h2>
+          <p class="section__lead">
+            Quatre univers gourmands pour régaler toutes les envies, du petit
+            déjeuner au déjeuner sur le pouce.
+          </p>
+        </header>
+
+        <div class="cards-grid">
+          <!-- Carte 1 : Boulangerie -->
+          <article class="card">
+            <!-- Remplacez le src par votre vraie photo -->
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/d8b98a/4a3526?text=Boulangerie"
+              alt="Pains et baguettes artisanales"
+              loading="lazy"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Boulangerie</h3>
+              <p class="card__text">
+                Baguettes de tradition, pains spéciaux et au levain, cuits au
+                fournil tout au long de la journée.
+              </p>
+            </div>
+          </article>
+
+          <!-- Carte 2 : Pâtisserie -->
+          <article class="card">
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/e0c9a6/4a3526?text=P%C3%A2tisserie"
+              alt="Pâtisseries et gâteaux gourmands"
+              loading="lazy"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Pâtisserie</h3>
+              <p class="card__text">
+                Viennoiseries pur beurre, éclairs, tartes et gâteaux de fête
+                réalisés avec des produits de qualité.
+              </p>
+            </div>
+          </article>
+
+          <!-- Carte 3 : Snacking / Sandwicherie -->
+          <article class="card">
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/c9a87c/4a3526?text=Snacking"
+              alt="Sandwichs et snacking maison"
+              loading="lazy"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Snacking & Sandwicherie</h3>
+              <p class="card__text">
+                Sandwichs frais, paninis, quiches et salades préparés chaque
+                jour pour un déjeuner rapide et savoureux.
+              </p>
+            </div>
+          </article>
+
+          <!-- Carte 4 : Traiteur -->
+          <article class="card">
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/b8946a/4a3526?text=Traiteur"
+              alt="Plateaux et prestations traiteur"
+              loading="lazy"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Traiteur</h3>
+              <p class="card__text">
+                Plateaux apéritifs, buffets et pièces cocktail sur commande pour
+                vos événements et réceptions.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION NOTRE SAVOIR-FAIRE : bloc texte + image
+         ============================================================ -->
+    <section class="section savoir-faire" id="savoir-faire">
+      <div class="container savoir-faire__inner">
+        <!-- Colonne image -->
+        <div class="savoir-faire__media">
+          <img
+            src="https://placehold.co/700x560/c79a63/ffffff?text=Notre+Fournil"
+            alt="Artisan boulanger au travail dans le fournil"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Colonne texte -->
+        <div class="savoir-faire__text">
+          <p class="section__eyebrow">Depuis le premier coup de four</p>
+          <h2 class="section__title">Notre Savoir-Faire</h2>
+          <p>
+            Chez <strong>Au Blé Sucré</strong>, tout est <strong>fait maison</strong>.
+            Nous sélectionnons des <strong>farines et des produits locaux</strong>,
+            travaillés à l'ancienne pour révéler le vrai goût des choses.
+          </p>
+
+          <!-- Liste des engagements -->
+          <ul class="features">
+            <li class="features__item">
+              <span class="features__icon" aria-hidden="true">🌾</span>
+              <span><strong>Produits locaux</strong> — des ingrédients de saison, choisis avec soin.</span>
+            </li>
+            <li class="features__item">
+              <span class="features__icon" aria-hidden="true">👐</span>
+              <span><strong>Fait maison</strong> — pétri, façonné et cuit sur place chaque jour.</span>
+            </li>
+            <li class="features__item">
+              <span class="features__icon" aria-hidden="true">❤️</span>
+              <span><strong>Passion du métier</strong> — un savoir-faire artisanal transmis avec amour.</span>
+            </li>
+          </ul>
+
+          <a href="#contact" class="btn btn--outline">Venez nous rencontrer</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       PIED DE PAGE : contact, horaires, Facebook
+       ============================================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <!-- Bloc 1 : Marque & présentation -->
+      <div class="footer-col">
+        <h3 class="footer-brand">🥖 Au Blé Sucré</h3>
+        <p class="footer-about">
+          Votre boulangerie-pâtisserie artisanale. Le plaisir du fait maison,
+          à partager au quotidien.
+        </p>
+        <!-- Lien Facebook bien visible -->
+        <a
+          class="social-link"
+          href="https://www.facebook.com/aublesucre/?locale=fr_FR"
+          target="_blank"
+          rel="noopener"
+          aria-label="Suivez-nous sur Facebook"
+        >
+          <span class="social-link__icon" aria-hidden="true">f</span>
+          <span>Suivez-nous sur Facebook</span>
+        </a>
+      </div>
+
+      <!-- Bloc 2 : Coordonnées -->
+      <div class="footer-col">
+        <h4 class="footer-title">Nous trouver</h4>
+        <address class="footer-contact">
+          <!-- Remplacez par votre adresse réelle -->
+          <p>📍 123 rue de la Boulangerie<br />75000 Ville</p>
+          <p>📞 <a href="tel:+33000000000">01 23 45 67 89</a></p>
+          <p>✉️ <a href="mailto:contact@ablesucre.fr">contact@ablesucre.fr</a></p>
+        </address>
+      </div>
+
+      <!-- Bloc 3 : Horaires d'ouverture -->
+      <div class="footer-col">
+        <h4 class="footer-title">Horaires d'ouverture</h4>
+        <ul class="hours">
+          <li><span>Lun — Ven</span><span>06h30 – 19h30</span></li>
+          <li><span>Samedi</span><span>06h30 – 19h00</span></li>
+          <li><span>Dimanche</span><span>07h00 – 13h00</span></li>
+          <li class="hours__closed"><span>Jour de fermeture</span><span>Lundi après-midi</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bas de page -->
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Au Blé Sucré — Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Script (interactions : menu mobile, année, scroll fluide) -->
+  <script src="script.js"></script>
+</body>
+</html>
