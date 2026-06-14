@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  
   <meta charset="UTF-8" />
   <!-- Approche Mobile-First : on garantit un rendu correct sur mobile en premier -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Au Blé Sucré — Boulangerie-Pâtisserie Artisanale</title>
+  <!-- ===== SEO LOCAL ===== -->
+  <title>Au Blé Sucré — Boulangerie-Pâtisserie Artisanale à Couterne, Bagnoles-de-l'Orne & Juvigny (Normandie)</title>
   <meta
     name="description"
-    content="Au Blé Sucré, votre boulangerie-pâtisserie artisanale. Pains, viennoiseries, pâtisseries, snacking et traiteur faits maison avec passion."
+    content="Boulangerie-pâtisserie artisanale & traiteur en Normandie. Pains tradition, croissants, pâtisseries et snacking faits maison. 3 boutiques : Couterne (Rives d'Andaine), Juvigny-sous-Andaine et Bagnoles-de-l'Orne."
   />
+  <meta name="keywords" content="boulangerie Couterne, boulangerie Bagnoles-de-l'Orne, pâtisserie Rives d'Andaine, croissant Normandie, traiteur Juvigny-sous-Andaine, Au Blé Sucré" />
+  <meta name="author" content="Au Blé Sucré" />
+  <link rel="canonical" href="https://www.aublesucre.fr/" />
+
+  <!-- Open Graph (partage Facebook / réseaux sociaux) -->
+  <meta property="og:type" content="business.business" />
+  <meta property="og:title" content="Au Blé Sucré — Boulangerie-Pâtisserie Artisanale (Normandie)" />
+  <meta property="og:description" content="L'artisanat boulanger au cœur de la Normandie. Pains, viennoiseries, pâtisseries, snacking & traiteur faits maison. 3 boutiques." />
+  <meta property="og:locale" content="fr_FR" />
+  <!-- TODO CLIENT : ajoutez l'URL d'une vraie photo (1200x630) pour l'aperçu de partage -->
+  <meta property="og:image" content="https://placehold.co/1200x630/8a5a2b/fbf6ee?text=Au+Bl%C3%A9+Sucr%C3%A9" />
 
   <!-- ===== Typographies (Google Fonts) =====
        Serif élégante (Playfair Display) pour les titres -> tradition & artisanat
@@ -22,8 +33,104 @@
     rel="stylesheet"
   />
 
-  <!-- Feuille de style principale -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- ===== Leaflet (carte OpenStreetMap, 100% gratuite) ===== -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <!-- Feuille de style principale (le fichier s'appelle bien style.css) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ============================================================
+       SEO LOCAL : Données structurées schema.org (une fiche par boutique)
+       Aide Google à afficher adresse, horaires, note et téléphone.
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Bakery",
+        "@id": "https://www.aublesucre.fr/#couterne",
+        "name": "Au Blé Sucré — Couterne",
+        "description": "Boulangerie-pâtisserie artisanale & traiteur. Boutique principale.",
+        "image": "https://placehold.co/1200x630/8a5a2b/fbf6ee?text=Au+Bl%C3%A9+Sucr%C3%A9",
+        "telephone": "+33250458876",
+        "email": "aublesucre.pro@gmail.com",
+        "url": "https://www.aublesucre.fr/",
+        "priceRange": "€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1 route d'Alençon",
+          "addressLocality": "Rives d'Andaine (Couterne)",
+          "postalCode": "61410",
+          "addressRegion": "Normandie",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 48.5132,
+          "longitude": -0.4148
+        },
+        "sameAs": ["https://www.facebook.com/aublesucre"],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.6",
+          "reviewCount": "95"
+        },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:30" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "12:30" }
+        ]
+      },
+      {
+        "@type": "Bakery",
+        "@id": "https://www.aublesucre.fr/#juvigny",
+        "name": "Au Blé Sucré — Juvigny-sous-Andaine",
+        "telephone": "+33250458876",
+        "email": "aublesucre.pro@gmail.com",
+        "priceRange": "€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "22 place St Michel",
+          "addressLocality": "Juvigny Val d'Andaine (Juvigny-sous-Andaine)",
+          "postalCode": "61140",
+          "addressRegion": "Normandie",
+          "addressCountry": "FR"
+        },
+        "sameAs": ["https://www.facebook.com/aublesucre"],
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:30" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "12:30" }
+        ]
+      },
+      {
+        "@type": "Bakery",
+        "@id": "https://www.aublesucre.fr/#bagnoles",
+        "name": "Au Blé Sucré — Bagnoles-de-l'Orne",
+        "telephone": "+33250458876",
+        "email": "aublesucre.pro@gmail.com",
+        "priceRange": "€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "7 place de l'Église",
+          "addressLocality": "Bagnoles-de-l'Orne Normandie",
+          "postalCode": "61140",
+          "addressRegion": "Normandie",
+          "addressCountry": "FR"
+        },
+        "sameAs": ["https://www.facebook.com/aublesucre"],
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:30" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "12:30" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -55,7 +162,10 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="#accueil" class="nav-link">Accueil</a></li>
         <li><a href="#specialites" class="nav-link">Nos Spécialités</a></li>
-        <li><a href="#savoir-faire" class="nav-link">Notre Savoir-Faire</a></li>
+        <li><a href="#savoir-faire" class="nav-link">Savoir-Faire</a></li>
+        <li><a href="#avis" class="nav-link">Avis</a></li>
+        <li><a href="#boutiques" class="nav-link">Nos Boutiques</a></li>
+        <li><a href="#traiteur" class="nav-link">Traiteur</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </nav>
@@ -63,146 +173,81 @@
 
   <main>
     <!-- ============================================================
-         SECTION HERO : accroche + image de fond + CTA
+         SECTION HERO : accroche plein écran + image de fond + CTA
          ============================================================ -->
     <section class="hero">
       <div class="hero__overlay"></div>
       <div class="hero__content">
-        <p class="hero__eyebrow">Boulangerie • Pâtisserie • Artisanale</p>
-        <h1 class="hero__title">L'Artisanat et le Goût au Quotidien</h1>
+        <p class="hero__eyebrow">Boulangerie • Pâtisserie • Traiteur — Normandie</p>
+        <h1 class="hero__title">L'artisanat boulanger au cœur de la Normandie</h1>
         <p class="hero__subtitle">
-          Chaque matin, nous pétrissons, façonnons et cuisons nos produits sur
-          place. Le bon pain, les viennoiseries dorées et les pâtisseries
-          gourmandes vous attendent.
+          Chaque matin, nous pétrissons, façonnons et cuisons sur place. Pains de
+          tradition, croissants dorés et pâtisseries gourmandes — le bon goût du
+          fait maison, dans nos trois boutiques.
         </p>
-        <a href="#specialites" class="btn btn--primary">Découvrir nos produits</a>
-      </div>
-    </section>
 
-    <!-- ============================================================
-         SECTION NOS SPÉCIALITÉS : grille de 4 cartes (CSS Grid)
-         ============================================================ -->
-    <section class="section specialites" id="specialites">
-      <div class="container">
-        <header class="section__head">
-          <p class="section__eyebrow">Le meilleur du fait maison</p>
-          <h2 class="section__title">Nos Spécialités</h2>
-          <p class="section__lead">
-            Quatre univers gourmands pour régaler toutes les envies, du petit
-            déjeuner au déjeuner sur le pouce.
-          </p>
-        </header>
+        <!-- Preuve sociale : note Google (à vérifier en direct avant publication) -->
+        <a
+          class="rating-badge"
+          href="https://www.google.com/search?q=Au+Bl%C3%A9+Sucr%C3%A9+Couterne"
+          target="_blank"
+          rel="noopener"
+          aria-label="Voir nos avis Google : 4,6 sur 5 pour environ 95 avis"
+        >
+          <span class="rating-badge__stars" aria-hidden="true">★★★★★</span>
+          <span class="rating-badge__text"><strong>4,6/5</strong> · ~95 avis Google</span>
+        </a>
 
-        <div class="cards-grid">
-          <!-- Carte 1 : Boulangerie -->
-          <article class="card">
-            <!-- Remplacez le src par votre vraie photo -->
-            <img
-              class="card__img"
-              src="https://placehold.co/600x400/d8b98a/4a3526?text=Boulangerie"
-              alt="Pains et baguettes artisanales"
-              loading="lazy"
-            />
-            <div class="card__body">
-              <h3 class="card__title">Boulangerie</h3>
-              <p class="card__text">
-                Baguettes de tradition, pains spéciaux et au levain, cuits au
-                fournil tout au long de la journée.
-              </p>
-            </div>
-          </article>
-
-          <!-- Carte 2 : Pâtisserie -->
-          <article class="card">
-            <img
-              class="card__img"
-              src="https://placehold.co/600x400/e0c9a6/4a3526?text=P%C3%A2tisserie"
-              alt="Pâtisseries et gâteaux gourmands"
-              loading="lazy"
-            />
-            <div class="card__body">
-              <h3 class="card__title">Pâtisserie</h3>
-              <p class="card__text">
-                Viennoiseries pur beurre, éclairs, tartes et gâteaux de fête
-                réalisés avec des produits de qualité.
-              </p>
-            </div>
-          </article>
-
-          <!-- Carte 3 : Snacking / Sandwicherie -->
-          <article class="card">
-            <img
-              class="card__img"
-              src="https://placehold.co/600x400/c9a87c/4a3526?text=Snacking"
-              alt="Sandwichs et snacking maison"
-              loading="lazy"
-            />
-            <div class="card__body">
-              <h3 class="card__title">Snacking & Sandwicherie</h3>
-              <p class="card__text">
-                Sandwichs frais, paninis, quiches et salades préparés chaque
-                jour pour un déjeuner rapide et savoureux.
-              </p>
-            </div>
-          </article>
-
-          <!-- Carte 4 : Traiteur -->
-          <article class="card">
-            <img
-              class="card__img"
-              src="https://placehold.co/600x400/b8946a/4a3526?text=Traiteur"
-              alt="Plateaux et prestations traiteur"
-              loading="lazy"
-            />
-            <div class="card__body">
-              <h3 class="card__title">Traiteur</h3>
-              <p class="card__text">
-                Plateaux apéritifs, buffets et pièces cocktail sur commande pour
-                vos événements et réceptions.
-              </p>
-            </div>
-          </article>
+        <!-- 2 call-to-action -->
+        <div class="hero__cta">
+          <a href="#specialites" class="btn btn--primary">Découvrir nos produits</a>
+          <a href="#boutiques" class="btn btn--ghost">Nous trouver</a>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         SECTION NOTRE SAVOIR-FAIRE : bloc texte + image
+         SECTION À PROPOS / SAVOIR-FAIRE : bloc texte + image
          ============================================================ -->
     <section class="section savoir-faire" id="savoir-faire">
       <div class="container savoir-faire__inner">
         <!-- Colonne image -->
-        <div class="savoir-faire__media">
+        <div class="savoir-faire__media reveal">
+          <!-- TODO CLIENT : remplacez par une vraie photo du fournil (format WebP conseillé) -->
           <img
             src="https://placehold.co/700x560/c79a63/ffffff?text=Notre+Fournil"
-            alt="Artisan boulanger au travail dans le fournil"
+            alt="Artisan boulanger au travail dans le fournil d'Au Blé Sucré"
             loading="lazy"
+            width="700"
+            height="560"
           />
         </div>
 
         <!-- Colonne texte -->
-        <div class="savoir-faire__text">
+        <div class="savoir-faire__text reveal">
           <p class="section__eyebrow">Depuis le premier coup de four</p>
           <h2 class="section__title">Notre Savoir-Faire</h2>
           <p>
-            Chez <strong>Au Blé Sucré</strong>, tout est <strong>fait maison</strong>.
-            Nous sélectionnons des <strong>farines et des produits locaux</strong>,
-            travaillés à l'ancienne pour révéler le vrai goût des choses.
+            Chez <strong>Au Blé Sucré</strong>, tout est <strong>fait maison</strong>,
+            avec des <strong>recettes authentiques</strong> et des
+            <strong>ingrédients de qualité</strong>. Nous travaillons à l'ancienne
+            pour révéler le vrai goût des choses, dans un esprit
+            <strong>chaleureux et familial</strong>.
           </p>
 
           <!-- Liste des engagements -->
           <ul class="features">
             <li class="features__item">
               <span class="features__icon" aria-hidden="true">🌾</span>
-              <span><strong>Produits locaux</strong> — des ingrédients de saison, choisis avec soin.</span>
+              <span><strong>Ingrédients de qualité</strong> — sélectionnés avec soin pour le goût.</span>
             </li>
             <li class="features__item">
               <span class="features__icon" aria-hidden="true">👐</span>
-              <span><strong>Fait maison</strong> — pétri, façonné et cuit sur place chaque jour.</span>
+              <span><strong>Frais &amp; fait sur place</strong> — pétri, façonné et cuit chaque jour.</span>
             </li>
             <li class="features__item">
               <span class="features__icon" aria-hidden="true">❤️</span>
-              <span><strong>Passion du métier</strong> — un savoir-faire artisanal transmis avec amour.</span>
+              <span><strong>Accueil familial</strong> — un savoir-faire artisanal transmis avec passion.</span>
             </li>
           </ul>
 
@@ -210,10 +255,290 @@
         </div>
       </div>
     </section>
+
+    <!-- ============================================================
+         SECTION NOS SPÉCIALITÉS : grille de cartes (CSS Grid)
+         ============================================================ -->
+    <section class="section specialites" id="specialites">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">Le meilleur du fait maison</p>
+          <h2 class="section__title">Nos Spécialités</h2>
+          <p class="section__lead">
+            Du petit déjeuner au déjeuner sur le pouce, et jusqu'à vos plus
+            belles occasions.
+          </p>
+        </header>
+
+        <div class="cards-grid">
+          <!-- Carte : Viennoiseries (mise en avant : nos croissants) -->
+          <article class="card card--featured reveal">
+            <span class="card__badge">⭐ La spécialité</span>
+            <!-- TODO CLIENT : remplacez par une vraie photo de croissants (WebP) -->
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/e0c9a6/4a3526?text=Croissants"
+              alt="Croissants et pains au chocolat dorés, faits maison"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Viennoiseries</h3>
+              <p class="card__text">
+                Nos <strong>croissants</strong> et pains au chocolat pur beurre,
+                dorés et croustillants — les chouchous de nos clients.
+              </p>
+            </div>
+          </article>
+
+          <!-- Carte : Boulangerie -->
+          <article class="card reveal">
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/d8b98a/4a3526?text=Boulangerie"
+              alt="Baguettes de tradition et pains spéciaux artisanaux"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Pains</h3>
+              <p class="card__text">
+                Baguettes de tradition et pains spéciaux, cuits au fournil tout
+                au long de la journée.
+              </p>
+            </div>
+          </article>
+
+          <!-- Carte : Pâtisserie -->
+          <article class="card reveal">
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/c9a87c/4a3526?text=P%C3%A2tisseries"
+              alt="Tartes aux pommes, fraisier et crumble aux fruits rouges"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Pâtisseries</h3>
+              <p class="card__text">
+                Tartes aux pommes, crumble aux fruits rouges, fraisier et
+                créations gourmandes au fil des saisons.
+              </p>
+            </div>
+          </article>
+
+          <!-- Carte : Snacking -->
+          <article class="card reveal">
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/b8946a/4a3526?text=Snacking"
+              alt="Pizzas, quiches et sandwichs maison"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Snacking</h3>
+              <p class="card__text">
+                Pizzas, quiches et sandwichs frais préparés chaque jour pour un
+                déjeuner rapide et savoureux.
+              </p>
+            </div>
+          </article>
+
+          <!-- Carte : Traiteur -->
+          <article class="card reveal">
+            <img
+              class="card__img"
+              src="https://placehold.co/600x400/c79a63/4a3526?text=Traiteur"
+              alt="Gâteaux et plateaux traiteur pour événements"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="card__body">
+              <h3 class="card__title">Traiteur</h3>
+              <p class="card__text">
+                Gâteaux pour vos événements et commandes de groupe — parlons de
+                votre projet gourmand.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION AVIS CLIENTS : preuve sociale (note Google + témoignages)
+         ============================================================ -->
+    <section class="section avis" id="avis">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">Ce que disent nos clients</p>
+          <h2 class="section__title">Avis Clients</h2>
+          <!-- Note Google mise en avant (vérifiez le chiffre en direct avant publication) -->
+          <a
+            class="avis__google"
+            href="https://www.google.com/search?q=Au+Bl%C3%A9+Sucr%C3%A9+Couterne"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="avis__score">4,6</span>
+            <span class="avis__stars" aria-hidden="true">★★★★★</span>
+            <span class="avis__count">sur ~95 avis Google — voir la fiche</span>
+          </a>
+        </header>
+
+        <div class="avis-grid">
+          <!-- TODO CLIENT : remplacez par de vrais extraits d'avis Google -->
+          <blockquote class="avis-card reveal">
+            <p class="avis-card__stars" aria-hidden="true">★★★★★</p>
+            <p class="avis-card__text">
+              « Des croissants exceptionnels et un pain délicieux. On revient à
+              chaque passage en Normandie ! »
+            </p>
+            <footer class="avis-card__author">— Cliente Google</footer>
+          </blockquote>
+
+          <blockquote class="avis-card reveal">
+            <p class="avis-card__stars" aria-hidden="true">★★★★★</p>
+            <p class="avis-card__text">
+              « Accueil chaleureux et familial, produits toujours frais. Une
+              vraie boulangerie artisanale comme on les aime. »
+            </p>
+            <footer class="avis-card__author">— Client Google</footer>
+          </blockquote>
+
+          <blockquote class="avis-card reveal">
+            <p class="avis-card__stars" aria-hidden="true">★★★★★</p>
+            <p class="avis-card__text">
+              « Pâtisseries magnifiques et savoureuses. Le fraisier est un
+              régal, tout est fait maison. »
+            </p>
+            <footer class="avis-card__author">— Cliente Google</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION NOS BOUTIQUES : 3 adresses + horaires + carte Leaflet
+         ============================================================ -->
+    <section class="section boutiques" id="boutiques">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow">Trois adresses en Normandie</p>
+          <h2 class="section__title">Nos Boutiques</h2>
+          <p class="section__lead">
+            Retrouvez-nous à Couterne, Juvigny-sous-Andaine et
+            Bagnoles-de-l'Orne.
+          </p>
+        </header>
+
+        <div class="boutiques-grid">
+          <!-- Boutique 1 : Couterne (principale) -->
+          <article class="shop reveal">
+            <span class="shop__tag">Boutique principale</span>
+            <h3 class="shop__name">Couterne</h3>
+            <address class="shop__addr">
+              <p>📍 1 route d'Alençon<br />61410 Rives d'Andaine</p>
+              <p>📞 <a href="tel:+33250458876">02 50 45 88 76</a></p>
+            </address>
+            <ul class="hours hours--light">
+              <li><span>Lundi</span><span>Fermé</span></li>
+              <li><span>Mar — Ven</span><span>7h00 – 18h30</span></li>
+              <li><span>Samedi</span><span>7h00 – 18h30*</span></li>
+              <li><span>Dimanche</span><span>8h00 – 12h30</span></li>
+            </ul>
+            <a
+              class="shop__link"
+              href="https://www.google.com/maps/dir/?api=1&destination=48.5132,-0.4148"
+              target="_blank"
+              rel="noopener"
+            >Itinéraire →</a>
+          </article>
+
+          <!-- Boutique 2 : Juvigny-sous-Andaine -->
+          <article class="shop reveal">
+            <h3 class="shop__name">Juvigny-sous-Andaine</h3>
+            <address class="shop__addr">
+              <p>📍 22 place St Michel<br />61140 Juvigny Val d'Andaine</p>
+              <p>📞 <a href="tel:+33250458876">02 50 45 88 76</a></p>
+            </address>
+            <ul class="hours hours--light">
+              <li><span>Lundi</span><span>Fermé</span></li>
+              <li><span>Mar — Ven</span><span>7h00 – 18h30</span></li>
+              <li><span>Samedi</span><span>7h00 – 18h30*</span></li>
+              <li><span>Dimanche</span><span>8h00 – 12h30</span></li>
+            </ul>
+            <a
+              class="shop__link"
+              href="https://www.google.com/maps/search/?api=1&query=Au+Bl%C3%A9+Sucr%C3%A9+Juvigny-sous-Andaine"
+              target="_blank"
+              rel="noopener"
+            >Itinéraire →</a>
+          </article>
+
+          <!-- Boutique 3 : Bagnoles-de-l'Orne -->
+          <article class="shop reveal">
+            <h3 class="shop__name">Bagnoles-de-l'Orne</h3>
+            <address class="shop__addr">
+              <p>📍 7 place de l'Église<br />61140 Bagnoles-de-l'Orne Normandie</p>
+              <p>📞 <a href="tel:+33250458876">02 50 45 88 76</a></p>
+            </address>
+            <ul class="hours hours--light">
+              <li><span>Lundi</span><span>Fermé</span></li>
+              <li><span>Mar — Ven</span><span>7h00 – 18h30</span></li>
+              <li><span>Samedi</span><span>7h00 – 18h30*</span></li>
+              <li><span>Dimanche</span><span>8h00 – 12h30</span></li>
+            </ul>
+            <a
+              class="shop__link"
+              href="https://www.google.com/maps/search/?api=1&query=Au+Bl%C3%A9+Sucr%C3%A9+Bagnoles-de-l'Orne"
+              target="_blank"
+              rel="noopener"
+            >Itinéraire →</a>
+          </article>
+        </div>
+
+        <!-- Note horaires : le samedi reste à confirmer -->
+        <p class="boutiques__note">
+          * Horaires du samedi à confirmer auprès de la boutique. Les horaires
+          peuvent varier les jours fériés.
+        </p>
+
+        <!-- Carte interactive (OpenStreetMap via Leaflet) -->
+        <div id="map" class="map" aria-label="Carte de localisation des boutiques Au Blé Sucré"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION TRAITEUR / COMMANDES : bandeau CTA
+         ============================================================ -->
+    <section class="section traiteur" id="traiteur">
+      <div class="container traiteur__inner reveal">
+        <div class="traiteur__text">
+          <p class="section__eyebrow">Traiteur &amp; commandes</p>
+          <h2 class="section__title">Un événement à régaler&nbsp;?</h2>
+          <p>
+            Gâteaux personnalisés, plateaux et commandes de groupe : confiez-nous
+            vos anniversaires, fêtes et réceptions. Passez commande directement
+            en boutique ou contactez-nous.
+          </p>
+        </div>
+        <div class="traiteur__actions">
+          <a href="tel:+33250458876" class="btn btn--primary">📞 02 50 45 88 76</a>
+          <a href="mailto:aublesucre.pro@gmail.com" class="btn btn--outline">Demander un devis</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ============================================================
-       PIED DE PAGE : contact, horaires, Facebook
+       PIED DE PAGE : contact, réseaux, rappel horaires
        ============================================================ -->
   <footer class="site-footer" id="contact">
     <div class="container footer-grid">
@@ -221,13 +546,13 @@
       <div class="footer-col">
         <h3 class="footer-brand">🥖 Au Blé Sucré</h3>
         <p class="footer-about">
-          Votre boulangerie-pâtisserie artisanale. Le plaisir du fait maison,
-          à partager au quotidien.
+          Boulangerie-pâtisserie artisanale &amp; traiteur en Normandie. Le
+          plaisir du fait maison, à partager au quotidien.
         </p>
         <!-- Lien Facebook bien visible -->
         <a
           class="social-link"
-          href="https://www.facebook.com/aublesucre/?locale=fr_FR"
+          href="https://www.facebook.com/aublesucre"
           target="_blank"
           rel="noopener"
           aria-label="Suivez-nous sur Facebook"
@@ -237,25 +562,24 @@
         </a>
       </div>
 
-      <!-- Bloc 2 : Coordonnées -->
+      <!-- Bloc 2 : Contact -->
       <div class="footer-col">
-        <h4 class="footer-title">Nous trouver</h4>
+        <h4 class="footer-title">Contact</h4>
         <address class="footer-contact">
-          <!-- Remplacez par votre adresse réelle -->
-          <p>📍 123 rue de la Boulangerie<br />75000 Ville</p>
-          <p>📞 <a href="tel:+33000000000">01 23 45 67 89</a></p>
-          <p>✉️ <a href="mailto:contact@ablesucre.fr">contact@ablesucre.fr</a></p>
+          <p>📞 <a href="tel:+33250458876">02 50 45 88 76</a></p>
+          <p>✉️ <a href="mailto:aublesucre.pro@gmail.com">aublesucre.pro@gmail.com</a></p>
+          <p>📘 <a href="https://www.facebook.com/aublesucre" target="_blank" rel="noopener">facebook.com/aublesucre</a></p>
         </address>
       </div>
 
-      <!-- Bloc 3 : Horaires d'ouverture -->
+      <!-- Bloc 3 : Horaires (communs aux boutiques) -->
       <div class="footer-col">
         <h4 class="footer-title">Horaires d'ouverture</h4>
         <ul class="hours">
-          <li><span>Lun — Ven</span><span>06h30 – 19h30</span></li>
-          <li><span>Samedi</span><span>06h30 – 19h00</span></li>
-          <li><span>Dimanche</span><span>07h00 – 13h00</span></li>
-          <li class="hours__closed"><span>Jour de fermeture</span><span>Lundi après-midi</span></li>
+          <li class="hours__closed"><span>Lundi</span><span>Fermé</span></li>
+          <li><span>Mardi — Vendredi</span><span>7h00 – 18h30</span></li>
+          <li><span>Samedi</span><span>7h00 – 18h30*</span></li>
+          <li><span>Dimanche</span><span>8h00 – 12h30</span></li>
         </ul>
       </div>
     </div>
@@ -266,7 +590,14 @@
     </div>
   </footer>
 
-  <!-- Script (interactions : menu mobile, année, scroll fluide) -->
+  <!-- ===== Leaflet JS (carte) — chargé avant notre script ===== -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <!-- Script (interactions : menu mobile, année, carte, animations au scroll) -->
   <script src="script.js"></script>
 </body>
 </html>
