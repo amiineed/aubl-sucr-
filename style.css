@@ -1,0 +1,602 @@
+/* =================================================================
+   AU BLÉ SUCRÉ — Feuille de style principale
+   Approche : Mobile-First, responsive, transitions douces.
+   ================================================================= */
+
+/* ===== 1. Variables (palette, typo, espacements) ===== */
+:root {
+  /* Palette chaleureuse : pain, blé, farine */
+  --color-gold: #c79a63;        /* doré */
+  --color-ocre: #b8794a;        /* ocre */
+  --color-cream: #fbf6ee;       /* beige cassé / farine */
+  --color-cream-dark: #f1e7d6;  /* beige plus soutenu */
+
+  /* Textes sombres pour le contraste / la lisibilité */
+  --color-chocolate: #3a2a20;   /* marron chocolat */
+  --color-anthracite: #2b2b2b;  /* gris anthracite */
+  --color-muted: #6b5d50;       /* texte secondaire */
+
+  --color-white: #ffffff;
+
+  /* Typographies */
+  --font-title: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Divers */
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(58, 42, 32, 0.12);
+  --shadow-hover: 0 18px 40px rgba(58, 42, 32, 0.22);
+  --transition: 0.3s ease;
+  --max-width: 1140px;
+  --header-height: 72px;
+}
+
+/* ===== 2. Reset léger & base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Décale l'ancre sous le header collant */
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--color-anthracite);
+  background-color: var(--color-cream);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  color: var(--color-chocolate);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* Conteneur centré réutilisable */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ===== 3. Boutons (avec transitions au survol) ===== */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 1.9rem;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform var(--transition), background-color var(--transition),
+    color var(--transition), box-shadow var(--transition);
+}
+
+.btn--primary {
+  background-color: var(--color-ocre);
+  color: var(--color-white);
+  box-shadow: 0 8px 20px rgba(184, 121, 74, 0.4);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-chocolate);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(58, 42, 32, 0.4);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-ocre);
+  border-color: var(--color-ocre);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-ocre);
+  color: var(--color-white);
+  transform: translateY(-3px);
+}
+
+/* ===== 4. En-tête / Navigation collante ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(251, 246, 238, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-cream-dark);
+}
+
+.navbar {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  min-height: var(--header-height);
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand__name {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.45rem;
+  color: var(--color-chocolate);
+}
+
+.brand__icon {
+  font-size: 1.5rem;
+}
+
+/* Liens de navigation */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  color: var(--color-anthracite);
+  transition: color var(--transition);
+}
+
+/* Soulignement animé au survol */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-ocre);
+  transition: width var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--color-ocre);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Bouton hamburger (caché sur desktop) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 26px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: var(--color-chocolate);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* ===== 5. Section Hero ===== */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.25rem;
+  /* Image de fond (placeholder) -> remplacez l'URL par votre photo */
+  background-image: url("https://placehold.co/1600x900/8a5a2b/3a2a20?text=Viennoiseries+%26+Pain+Chaud");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Voile sombre pour la lisibilité du texte */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(58, 42, 32, 0.55),
+    rgba(58, 42, 32, 0.75)
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  color: var(--color-white);
+  animation: fadeUp 1s ease both;
+}
+
+.hero__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.hero__title {
+  color: var(--color-white);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  margin-bottom: 1.25rem;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ===== 6. Sections génériques ===== */
+.section {
+  padding: 5rem 0;
+}
+
+.section__head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
+.section__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-ocre);
+  margin-bottom: 0.5rem;
+}
+
+.section__title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+.section__lead {
+  color: var(--color-muted);
+}
+
+/* ===== 7. Nos Spécialités (grille de cartes) ===== */
+.specialites {
+  background-color: var(--color-cream);
+}
+
+/* Mobile-first : 1 colonne par défaut */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* Effet de survol sur les cartes */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card__img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card__img {
+  transform: scale(1.06);
+}
+
+.card__body {
+  padding: 1.5rem;
+}
+
+.card__title {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.card__text {
+  color: var(--color-muted);
+  font-size: 0.96rem;
+}
+
+/* ===== 8. Notre Savoir-Faire (texte + image) ===== */
+.savoir-faire {
+  background-color: var(--color-cream-dark);
+}
+
+.savoir-faire__inner {
+  display: grid;
+  grid-template-columns: 1fr; /* empilé sur mobile */
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.savoir-faire__media img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.savoir-faire__text p {
+  color: var(--color-muted);
+  margin-bottom: 1.25rem;
+}
+
+.savoir-faire__text strong {
+  color: var(--color-chocolate);
+}
+
+/* Liste des engagements */
+.features {
+  list-style: none;
+  margin-bottom: 1.75rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.features__item {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  color: var(--color-muted);
+}
+
+.features__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+/* ===== 9. Pied de page ===== */
+.site-footer {
+  background-color: var(--color-chocolate);
+  color: var(--color-cream);
+  padding-top: 3.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* empilé sur mobile */
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.footer-brand {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-about {
+  color: rgba(251, 246, 238, 0.75);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.footer-title {
+  color: var(--color-gold);
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.footer-contact p {
+  margin-bottom: 0.6rem;
+  font-style: normal;
+  color: rgba(251, 246, 238, 0.85);
+}
+
+.footer-contact a:hover {
+  color: var(--color-gold);
+}
+
+/* Horaires structurés */
+.hours {
+  list-style: none;
+}
+
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgba(251, 246, 238, 0.2);
+  font-size: 0.92rem;
+  color: rgba(251, 246, 238, 0.85);
+}
+
+.hours__closed {
+  color: var(--color-gold);
+}
+
+/* Lien Facebook bien visible */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #1877f2; /* bleu Facebook */
+  color: var(--color-white);
+  padding: 0.6rem 1.1rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  opacity: 0.92;
+}
+
+.social-link__icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: #1877f2;
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(251, 246, 238, 0.15);
+  padding: 1.25rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(251, 246, 238, 0.6);
+}
+
+/* ===== 10. Animations ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect des préférences utilisateur (accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =================================================================
+   11. RESPONSIVE — Breakpoints (Mobile-First : on ajoute en montant)
+   ================================================================= */
+
+/* Tablette : 2 colonnes de cartes */
+@media (min-width: 600px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Petit desktop : pied de page sur 3 colonnes */
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+
+  /* Savoir-faire : 2 colonnes (image | texte) */
+  .savoir-faire__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop : 4 colonnes de cartes */
+@media (min-width: 992px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =================================================================
+   12. MENU MOBILE — affiché sous 768px
+   ================================================================= */
+@media (max-width: 767px) {
+  /* Affiche le hamburger */
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Menu en panneau déroulant */
+  .nav-menu {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    width: min(75%, 300px);
+    height: calc(100vh - var(--header-height));
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-cream);
+    box-shadow: -8px 0 30px rgba(58, 42, 32, 0.18);
+    padding: 1rem 0;
+    /* Caché par défaut (hors écran) */
+    transform: translateX(100%);
+    transition: transform var(--transition);
+  }
+
+  /* État ouvert (classe ajoutée par JS) */
+  .nav-menu.is-open {
+    transform: translateX(0);
+  }
+
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-cream-dark);
+  }
+
+  /* Animation du hamburger en croix quand ouvert */
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.is-open .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Désactive le parallaxe sur mobile (perf + bug iOS) */
+  .hero {
+    background-attachment: scroll;
+  }
+}
